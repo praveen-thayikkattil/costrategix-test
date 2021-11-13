@@ -3,6 +3,8 @@ import Pagination from "react-js-pagination";
 import User from './User';
 
 const UsersList = ({ users }) => {
+    const [searchValue, setSearchValue] = useState('');
+
     const items = users;
     const itemsPerPage = 2;
     const [activePage, setCurrentPage] = useState(1);
@@ -11,7 +13,15 @@ const UsersList = ({ users }) => {
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = items.slice( indexOfFirstItem, indexOfLastItem );
 
-    const renderItems = currentItems.map( ( item, index ) => {
+    const renderUsers = currentItems.filter( item => {
+        if (!searchValue) return true;
+
+        if(item.name.toLowerCase().includes(searchValue.toLowerCase())) {
+            return true;
+        }
+
+        return false;
+    }).map((item, index) => {
         return <User key={index} data={item} />
     });
 
@@ -22,7 +32,16 @@ const UsersList = ({ users }) => {
 
     return (
         <>
-            {renderItems}
+            <form className="search-form">
+                <input
+                    type="text" 
+                    placeholder="Type a name to search..." 
+                    value={searchValue}
+                    onChange={e => setSearchValue(e.target.value)}
+                />
+            </form>
+
+            {renderUsers}
 
             <div className="pagination-wrapper">
                 <Pagination

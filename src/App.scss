@@ -26,10 +26,32 @@
         li {
           margin: 0 0 10px 0;
           padding: 0;
-          strong {}
+          strong {
+            margin-right: 5px;
+          }
           span {}
         }
       }
+    }
+  }
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin: 0 0 10px 0;
+    padding: 5px;
+    border: 1px solid rgba(black, 0);
+    outline: 0;
+    box-shadow: rgba(black, 0.25) 0 0 5px;
+    &:hover,
+    &:focus {
+      border: 1px solid rgba(black, 0.1);
     }
   }
 }
