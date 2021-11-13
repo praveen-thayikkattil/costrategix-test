@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import UsersList from './components/usersList';
+import UsersList from './components/UsersList';
 import './App.scss';
 
 function App() {
