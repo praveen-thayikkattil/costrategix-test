@@ -1,0 +1,35 @@
+.users-list-wrapper {
+  background: #eee;
+  padding: 20px;
+  .user {
+    display: flex;
+    background: white;
+    margin-bottom: 20px;
+    box-shadow: rgba(black, 0.25) 0 0 5px;
+    .user-avatar {
+      flex: 0;
+      img {
+        height: 200px;
+        width: 200px;
+      }
+    }
+    .user-details {
+      header {
+        h1 {
+          font-size: 24px;
+        }
+      }
+      .user-contact-details {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+          margin: 0 0 10px 0;
+          padding: 0;
+          strong {}
+          span {}
+        }
+      }
+    }
+  }
+}

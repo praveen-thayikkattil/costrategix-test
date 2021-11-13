@@ -1,23 +1,34 @@
+import { useEffect, useState } from 'react';
+import UsersList from './components/usersList';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
 function App() {
+  const [users, setUsers] = useState([]);
+
+  function getUsers() {
+    return fetch('https://jsonplaceholder.typicode.com/users')
+      .then(data => data.json())
+  }
+
+  useEffect(() => {
+    let mounted = true;
+    getUsers()
+      .then(users => {
+        if(mounted) {
+          setUsers(users)
+        }
+      })
+    return () => mounted = false;
+  }, [])
+
+  console.log(users);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section className="users-list-wrapper">
+        <UsersList users={users} />
+      </section>
     </div>
   );
 }
