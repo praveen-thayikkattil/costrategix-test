@@ -2,7 +2,7 @@ import User from './User';
 
 const usersList = ({ users }) => {
     return users.map((user, index) => {
-        return <User data={user} />
+        return <User key={index} data={user} />
     });
 }
 
