@@ -4,7 +4,6 @@ import './App.scss';
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
 
   function getUsers() {
     return fetch('https://jsonplaceholder.typicode.com/users')
